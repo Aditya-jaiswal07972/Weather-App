@@ -8,7 +8,7 @@ const img = document.getElementById("img-icon")
 async function getdata(city) {
 const apikey = 'd8193b6072a84f05a39141119251403';
    const promise = await fetch(
-    `http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${city}`
+    `https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${city}`
 );
     return await promise.json();
 }
