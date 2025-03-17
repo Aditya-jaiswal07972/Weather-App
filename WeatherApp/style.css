@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bgc, #e0f3f2);
+    color: (--tc, #333);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container{
+    width: 70%;
+    max-width: 700px;
+    text-align: center;
+    padding: 20px 35px;
+    background: linear-gradient(135deg, #00d8fe, #3a316f);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.search-bar{
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #24322e, #7c6aeb);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+div {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#search-input {
+    padding: 10px 20px;
+    height: 40px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 100px;
+    width: 300px;
+    background: #ebfffc;
+    color: #555;
+}
+
+#search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#search-button:hover {
+    background-color: #45a049;
+}
+#Theme {
+    padding: 10px 20px;
+    margin: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #542056;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+h3, h5 {
+    color: var(--tc,#333);
+    margin: 5px 0;
+}
+
+#city-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#city-time {
+    font-size: 18px;
+
+}
+
+#weather-info {
+    align-items: center;
+    justify-content: center;
+}
+
+#city-temp {
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 10px; 
+    align-items: center;
+}
+
+#img-icon img {
+    width: 100px;
+    height: 100px;
+}
+
