@@ -4,6 +4,16 @@ const cityname = document.getElementById("city-name")
 const citytime = document.getElementById("city-time")
 const citytemp = document.getElementById("city-temp")
 const img = document.getElementById("img-icon")
+const forecastContainer = document.createElement("div");
+
+forecastContainer.id = "forecast";
+document.querySelector(".container").appendChild(forecastContainer);
+
+const loader = document.createElement("p");
+loader.id = "loader";
+loader.innerText = `<div class="spinner"></div>`;
+loader.style.display = "none";
+document.querySelector(".container").appendChild(loader);
 
 async function getdata(city) {
 const apikey = 'd8193b6072a84f05a39141119251403';
@@ -14,15 +24,48 @@ const apikey = 'd8193b6072a84f05a39141119251403';
 }
 
 button.addEventListener("click",async()=>{
-    const value = city.value
-    const res = await getdata(value);
-    cityname.innerText = `${res.location.name}, ${res.location.region}, ${res.location.country}`;
-    citytime.innerText = res.location.localtime;
-    citytemp.innerText = `${res.current.temp_c} °C, ${res.current.condition.text}`;
-    img.innerHTML = `
-    <img src='${res.current.condition.icon}' alt='Weather Icon'>`;
+    const value = city.value.trim();
+    if (!value) {
+        cityname.innerText = "⚠️ Please enter a city name!";
+        return;
+    }
+   loader.style.display = "block"
+   forecastContainer.innerHTML = ""; 
+    try {
+        const res = await getdata(value);
+        if (res.error) throw new Error(res.error.message);
 
+        cityname.innerText = `${res.location.name}, ${res.location.region}, ${res.location.country}`;
+        citytime.innerText = res.location.localtime;
+        citytemp.innerText = `${res.current.temp_c} °C, ${res.current.condition.text}`;
+        img.innerHTML = `<img src='${res.current.condition.icon}' alt='Weather Icon'>`;
+
+       forecastContainer.innerHTML = "<h3>7-Day Forecast</h3>";
+       res.forecast.forecastday.forEach(day => {
+       const card = document.createElement("div");
+       card.className = "forecast-card";
+       card.innerHTML = `
+        <p><strong>${day.date}</strong></p>
+        <img src="${day.day.condition.icon}" alt="icon">
+        <p>${day.day.avgtemp_c} °C</p>
+        <p>${day.day.condition.text}</p>
+      `;
+      forecastContainer.appendChild(card);
+    });
+  }
+    } catch (err) {
+        cityname.innerText = `❌ ${err.message}`;
+        citytime.innerText = "";
+        citytemp.innerText = "";
+        img.innerHTML = "";
+    } finally {
+    loader.style.display = "none";
+  }
 });
+city.addEventListener("keypress", e => {
+    if (e.key === "Enter") button.click();
+});
+
 
 (function toggleTheme(){
 let darktheme = true;
