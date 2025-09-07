@@ -2,116 +2,162 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: var(--bgc, #e0f3f2);
+    background: var(--bgc, linear-gradient(135deg, #e0f3f2, #c1e8e6));
     color: var(--tc, #333);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 15px;
     flex-direction: column;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.container{
-    width: 70%;
+
+.container {
+    width: 100%;
     max-width: 700px;
     text-align: center;
-    padding: 20px 35px;
+    padding: 25px 20px;
     background: linear-gradient(135deg, #00d8fe, #3a316f);
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    color: #fff;
+    transition: transform 0.3s ease;
 }
-.search-bar{
-    text-align: center;
-    padding: 20px;
-    background: linear-gradient(135deg, #24322e, #7c6aeb);
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+.container:hover {
+    transform: translateY(-5px);
 }
-div {
+
+.search-bar {
     margin-bottom: 20px;
-    text-align: center;
+    padding: 15px;
+    background: linear-gradient(135deg, #24322e, #7c6aeb);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 #search-input {
-    padding: 10px 20px;
-    height: 40px;
+    padding: 12px 18px;
+    height: 45px;
     font-size: 16px;
-    border: 2px solid #ccc;
-    border-radius: 100px;
-    width: 300px;
-    background: #ebfffc;
-    color: #555;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    width: 100%;
+    max-width: 320px;
+    background: #f8fdfc;
+    color: #333;
+    outline: none;
+    transition: 0.3s;
 }
 
-#search-button {
-    padding: 10px 20px;
+#search-input:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+}
+
+#search-button, #Theme {
+    padding: 12px 24px;
+    margin: 10px 8px;
     font-size: 16px;
     border: none;
-    border-radius: 5px;
-    background-color: #4CAF50;
+    border-radius: 8px;
+    background: #4CAF50;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-#search-button:hover {
-    background-color: #45a049;
-}
 #Theme {
-    padding: 10px 20px;
-    margin: 12px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    background-color: #542056;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background: #542056;
 }
+
+#search-button:hover, #Theme:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
 h3, h5 {
-    color: var(--tc,#333);
-    margin: 5px 0;
+    margin: 6px 0;
+    font-weight: 500;
+    color: #fff;
 }
 
 #city-name {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
 }
 
 #city-time {
     font-size: 18px;
-
+    opacity: 0.9;
 }
 
 #weather-info {
-    align-items: center;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    gap: 10px;
 }
 
 #city-temp {
-    font-size: 22px;
+    font-size: 28px;
     font-weight: bold;
-    margin-right: 10px; 
-    align-items: center;
 }
 
 #img-icon img {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
 }
 
 .name {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-size: 16px;
+    bottom: 15px;
+    right: 15px;
+    font-size: 14px;
     color: #333;
     font-weight: bold;
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 5px 10px;
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 6px 12px;
+    border-radius: 6px;
+}
+
+/* 🔹 Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    #search-input {
+        width: 90%;
+    }
+
+    #search-button, #Theme {
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    #weather-info {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    #city-name {
+        font-size: 22px;
+    }
+
+    #city-temp {
+        font-size: 24px;
+    }
+
+    #img-icon img {
+        width: 70px;
+        height: 70px;
+    }
 }
