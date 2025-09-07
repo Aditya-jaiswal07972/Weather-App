@@ -52,7 +52,6 @@ button.addEventListener("click",async()=>{
       `;
       forecastContainer.appendChild(card);
     });
-  }
     } catch (err) {
         cityname.innerText = `❌ ${err.message}`;
         citytime.innerText = "";
