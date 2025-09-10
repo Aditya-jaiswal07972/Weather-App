@@ -2,6 +2,8 @@
 
 A simple web application that displays current weather information for a specified location.
 
+https://weatherapp-lemon-eight.vercel.app/
+
 ## Features
 
 - **Current Weather:** Displays temperature, humidity, and weather conditions for a searched city.
